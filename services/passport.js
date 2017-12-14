@@ -20,7 +20,7 @@ passport.use(
     new GoogleStrategy({
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
-        callbackURL: "https://murmuring-bayou-47844.herokuapp.com/auth/google/callback",
+        callbackURL: keys.callbackURL,
         proxy: true
     }, (accessToken, refreshToken, profile, done) => {
         User.findOne({ googleId: profile.id })
