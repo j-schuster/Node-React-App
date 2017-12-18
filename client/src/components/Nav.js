@@ -10,7 +10,7 @@ class Nav extends React.Component {
             case false:
                 return <a href="/auth/google">Login</a>
             default:   
-              return <a href="">Logout</a>
+              return <a href="/api/logout">Logout</a>
         }
     }
   

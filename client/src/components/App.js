@@ -5,7 +5,8 @@ import * as actions from '../actions';
 
 import Nav from './Nav';
 
-const Dashboard = () => <h2>Dashboard</h2>
+const Dashboard = () => <h2>Dashboard</h2>;
+const Home = () => <h2>Home</h2>;
 
 class App extends React.Component {
     
@@ -19,7 +20,8 @@ class App extends React.Component {
         <div>
             <BrowserRouter>
                 <div>
-                    <Route exact path="/" component={Nav}/>
+                    <Nav/>
+                    <Route exact path="/" component={Home}/>
                     <Route exact path="/profile" component={Dashboard}/>
                 </div>
             </BrowserRouter>
