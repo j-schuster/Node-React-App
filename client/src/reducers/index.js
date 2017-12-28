@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux'
-import authReducer from './authReducer'
+import userReducer from './userReducer'
+import jobsReducer from './jobsReducer'
+import servicesReducer from './servicesReducer'
 
 export default combineReducers({
-    auth: authReducer
+    user: userReducer,
+    jobs: jobsReducer,
+    services: servicesReducer
 })
 

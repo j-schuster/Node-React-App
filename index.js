@@ -1,10 +1,14 @@
-const express = require('express')
+const express = require('express');
 const mongoose = require('mongoose')
-const cookieSession = require('cookie-session')
-const passport = require('passport')
-require('./models/User')
-require('./services/passport')
-const keys = require('./config/keys')
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+require('./models/User');
+require('./models/Job');
+require('./models/Service')
+require('./services/passport');
+
+const keys = require('./config/keys');
 
 
 mongoose.connect(keys.mongoURI)
@@ -21,7 +25,14 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
 require('./routes/authRoutes')(app)
+require('./routes/jobRoutes')(app)
+require('./routes/servicesRoutes')(app)
 
 if(process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
