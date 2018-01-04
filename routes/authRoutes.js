@@ -12,6 +12,11 @@ module.exports = (app) => {
       })
     )
 
+    app.get('/api/user/:id', (req, res) => {
+       User.findById(req.params.id)
+        .then((user) => res.json(user))
+    });
+
     app.get(
         '/auth/google/callback', 
          passport.authenticate('google'),
@@ -31,8 +36,8 @@ module.exports = (app) => {
 
     app.post('/api/current_user', (req, res) => { 
 
-      const { about, city, country, interests, projects, image } = req.body.data
-      User.findOneAndUpdate({ _id: req.user._id }, {interests: interests, activeProjects: projects, city: city, country: country, about: about, image: image  }) 
+      const { about, city, country, interests, projects, image, skills } = req.body.data
+      User.findOneAndUpdate({ _id: req.user._id }, {interests: interests, activeProjects: projects, city: city, country: country, about: about, image: image, skills: skills }) 
       .then((res, err) => err ? console.log(err) : console.log('done'))   
 
       res.json(req.body.data)

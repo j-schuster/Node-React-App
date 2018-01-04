@@ -15,6 +15,7 @@ class Dashboard extends React.Component {
 	    projects: '',
 	    image: '',
 	    imageDone: false,
+	    skills: '',
 	    modalOpen: false
 	  }
 
@@ -34,6 +35,7 @@ class Dashboard extends React.Component {
 	        country: this.state.country,
 	        interests: this.state.interests,
 	        projects: this.state.projects,
+	        skills: this.state.skills,
 	        image: this.state.image
 	      }
  
@@ -67,7 +69,7 @@ class Dashboard extends React.Component {
 
 	render(){
 		if(this.props.user){
-			const { city, country, about, interests, projects, timestamp, image } = this.props.user
+			const { city, country, about, interests, projects, timestamp, image, skills } = this.props.user
 			
 			return (	
 				<div style={styles.outerContainer}>
@@ -100,8 +102,16 @@ class Dashboard extends React.Component {
 										        <Card.Description style={styles.description} textAlign='center'>{projects ? projects : "working on it"}</Card.Description>
 										      </Card.Content>
 						   					</Card>
-				  						</Card.Group>
-			  						</div>				 	   
+				  						</Card.Group> 													   				 
+			  						</div>	
+			  						
+			  						   	<Card style={styles.card}>
+									     		<Card.Content>
+										        <Card.Header style={styles.header} textAlign='center'>My Skills</Card.Header>
+										        <Card.Meta textAlign='center'>Technologies I build with</Card.Meta>
+										        <Card.Description style={styles.description} textAlign='center'>{skills ? skills : null}</Card.Description>
+										      </Card.Content>
+						   					</Card>
 			   					
 			   					<Button positive onClick={this.handleOpen} style={styles.contactBtn}>Edit Profile</Button>
 				        
@@ -142,6 +152,14 @@ class Dashboard extends React.Component {
 										      		    onChange={this.handleChange}
 										     					name="interests"/>
 										  			 </div>
+										  			 		 <div className="field">
+
+										  		 <label>Skills</label>
+										   		 <input type="text"  
+										   						placeholder="Whats your stack?"
+										   						onChange={this.handleChange}
+										     					name="skills"/>
+										  			 </div>	
 										  			 <label>Profile Picture</label>
 										  			 <div style={styles.dropzone}>
 										  			 <Dropzone onDrop={this.uploadFile}><p style={{textAlign: 'center'}}>Click or drag image to update your profile pic</p></Dropzone>
@@ -231,10 +249,9 @@ const styles={
 	  },
 	  cardDiv: {
 	  	display: 'flex', 
-	  	marginTop: 40
+	  	marginTop: 40,
 	  },
 	  outerContainer: {
-	  	height: '100vh', 
 	  	backgroundColor: '#F9FBFD', 
 	  	display: 'flex'
 	  }

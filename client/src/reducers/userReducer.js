@@ -7,7 +7,6 @@ export default function(state = null, action) {
         case UPDATE_USER :
         const final = { ...state, ...action.updatedUser.data}
         	return final   
-        
         default:
             return state;
     } 

@@ -2,10 +2,12 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const serviceSchema = new Schema({
-    title: String,
-    description: String,
+    userName: String,
+    about: String,
     image: '',
     skills: String,
+    lookingFor: String,
+    userId: String,
     timestamp: Date
 })
 

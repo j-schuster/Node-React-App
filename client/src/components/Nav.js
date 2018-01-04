@@ -16,10 +16,10 @@ class Nav extends React.Component {
     render() {   
 
     return (
-      <Menu stackable size='massive' className='navbar' borderless={true} style={{margin: 0}}>
+      <Menu stackable size='large' className='navbar' borderless={true} style={{margin: 0}}>
 
          
-          <img alt='truist logo' src={Truist} width={250} height={80} style={{marginLeft: 50}}/>
+          <img alt='truist logo' src={Truist} width={200} height={63} style={{marginLeft: 50}}/>
        
 
          {this.props.user ? <Menu.Menu position='right'>

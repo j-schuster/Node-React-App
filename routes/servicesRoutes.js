@@ -17,12 +17,14 @@ module.exports = (app) => {
 
   app.post('/api/services', (req, res) => {
   	
-  	const { title, description, skills } = req.body.data;
-
+  	const { userName, about, image, skills, lookingFor, userId } = req.body.data;
+   
   	const service = new Service({
-  		title,
-  		description,
-  		skills,
+  		userName: userName,
+      about: about,
+      image: image,
+      skills: skills,
+      userId: userId,
   		timestamp: Date.now()
   	})
 

@@ -11,6 +11,7 @@ const userSchema = new Schema({
     city: String,
     country: String,
     about: String,
+    skills: String,
     timestamp: ''
 })
 

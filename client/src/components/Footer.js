@@ -6,7 +6,7 @@ import './footer.css'
 class Footer extends React.Component {
 	render(){
 		return(
-			<Menu borderless color='blue' attached='bottom' style={{borderRadius: 0, height: '26vh', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+			<Menu color='blue' attached='bottom' style={{borderRadius: 0, height: '26vh', display: 'flex', justifyContent: 'space-around', alignItems: 'center', margin: 0}}>
 				<div style={{width: '40%', color: '#7c7c7c', textAlign: 'center', fontSize: 16, padding: 35}}>		
 				<img src={Truist} width={125} alt='' height={40}/>
 				 	<p style={{fontSize: 17}}>Truist is a platform where exchange between non profits and web developers happen. Using our code to help those that move the world forward.</p>

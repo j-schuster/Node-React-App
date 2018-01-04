@@ -10,11 +10,11 @@ import AddService from './AddService';
 import AllServices from './AllServices';
 import ServiceView from './ServiceView';
 import SignUp from './SignUp';
+import User from './User';
+import Home from './Home'
 
 import Nav from './Nav';
 import Footer from './Footer'
-
-const Home = () => <div style={{height: '100vh'}}><h2>Home</h2></div>;
 
 class App extends React.Component {
     
@@ -39,6 +39,7 @@ class App extends React.Component {
                     <Route exact path="/addservice" component={AddService}/>
                     <Route exact path="/services" component={AllServices}/>
                     <Route exact path="/services/:id" component={ServiceView}/>
+                    <Route exact path="/user/:id" component={User}/>
                     <Footer/> 
                 </div>
             </BrowserRouter>

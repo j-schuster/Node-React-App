@@ -5,7 +5,8 @@ import { FETCH_USER,
 		 GET_ALL_JOBS, 
 		 ADD_SERVICE,
 		 GET_ALL_SERVICES,
-		 GET_SERVICE } from './types';
+		 GET_SERVICE,
+		 GET_USER_INFO } from './types';
 
 export const fetchUser = () => async dispatch => {
     const user = await axios.get('/api/current_user');
@@ -77,6 +78,17 @@ export const addService = (data) => async dispatch => {
 		addedService
 	})
 } 
+
+export const getUserInfo = (id) => async dispatch => {
+	 const userInfo = await axios.get(`/api/user/${id}`);
+
+	 dispatch({
+	 	type: GET_USER_INFO,
+	 	userInfo
+	 })
+}
+
+
 
 
 

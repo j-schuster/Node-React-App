@@ -15,7 +15,7 @@ class ServiceView extends React.Component {
 		
 		return(
 			<div>
-				{this.props.services.singleService ? this.props.services.singleService.title : null}
+				<h1>Hello</h1>
 			</div>
 		)
 	}
