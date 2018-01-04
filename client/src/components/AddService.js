@@ -32,11 +32,11 @@ class AddService extends React.Component {
 	render(){
 		
 		return (
-			<Container>
-				<h1 style={{textAlign: 'center'}}>Looking for a job? Tell us more..</h1>
+			<Container style={{height: '100vh', width: '60%'}}>
+				<h1 style={{textAlign: 'center', marginTop: 80, color: '#7c7c7c'}}>Looking for a job? Tell us more..</h1>
 				<Form onSubmit={this.handleSubmit}>
 					<Form.Field required>
-		    		  <label>Title</label>
+		    		  <label>What do you have in mind?</label>
 		      		  <Input type='text' name='lookingFor' placeholder='What opportunity are you interested in?' onChange={this.handleChange}/>
 		    		</Form.Field>
 		    		<Button positive>Submit!</Button>

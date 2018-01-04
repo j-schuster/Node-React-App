@@ -19,10 +19,20 @@ class Nav extends React.Component {
       <Menu stackable size='large' className='navbar' borderless={true} style={{margin: 0}}>
 
          
-          <img alt='truist logo' src={Truist} width={200} height={63} style={{marginLeft: 50}}/>
+         <Link to='/'><img alt='truist logo' src={Truist} width={200} height={63} style={{marginLeft: 50}}/></Link>
        
 
          {this.props.user ? <Menu.Menu position='right'>
+
+                            <Dropdown item text='View All'>
+                                <Dropdown.Menu>
+                                  <Dropdown.Item href="/alljobs">Jobs</Dropdown.Item>
+                                   <Dropdown.Item href="/services">Services</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                   </Dropdown> 
+
+
+
                               <Dropdown item text='Create a Post'>
                                 <Dropdown.Menu>
                                   <Dropdown.Item href="/addjob">Add Job</Dropdown.Item>
@@ -32,6 +42,7 @@ class Nav extends React.Component {
                                   <Menu.Item>
                                 <Button primary href='/api/logout'>Logout</Button>
                               </Menu.Item>
+                              
                             </Menu.Menu> 
                           :<Menu.Menu position='right'>  
                               <Menu.Item>

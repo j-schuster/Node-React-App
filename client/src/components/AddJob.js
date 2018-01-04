@@ -47,7 +47,7 @@ class AddJob extends React.Component {
        		return <Redirect to={`/alljobs`}/>
      	}
 			return (
-				<div style={{height: '100vh', backgroundColor: '#F9FBFD', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+				<div style={{ backgroundColor: '#F9FBFD', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 					<h1 style={{color: '#7c7c7c', fontWeight: 100, marginTop: 100}}>Need a developer? You've come to the right place!</h1>
 						<h2 style={{color: '#7c7c7c', fontWeight: 100, margin: 5}}>Tell us more about your needs</h2>
 							<div style={{ width: '70%', backgroundColor: '#fff', padding: 20,  display: 'flex', justifyContent: 'center', alignItems: 'center', boxShadow: '9px 11px 8px -6px rgba(199,199,199,1)' }}>
