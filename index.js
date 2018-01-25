@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 require('./routes/authRoutes')(app)
 require('./routes/jobRoutes')(app)
 require('./routes/servicesRoutes')(app)
+require('./routes/contactRoutes')(app)
 
 if(process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));

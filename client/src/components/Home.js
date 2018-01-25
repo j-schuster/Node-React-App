@@ -18,7 +18,7 @@ class Home extends React.Component {
 				<div style={{backgroundColor: '#fff', width: '100%', marginTop: 100, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 					<h1 style={{marginTop: 100, color: '#042847'}}>How it works</h1>
 					 <Step.Group stackable='tablet'>
-				    <Step active primary>
+				    <Step active>
 				      <Icon name='signup' />
 				      <Step.Content>
 				        <Step.Title>Register</Step.Title>

@@ -34,10 +34,34 @@ module.exports = (app) => {
         res.send(req.user)
     })
 
+
+    app.post('/api/savedJobs', (req, res) => { 
+        
+        const job =  req.body.data 
+       console.log(job)
+        User.findOneAndUpdate({
+             _id: req.user._id 
+            }, { $push: { savedJobs: job } }, { new: true }
+        ) 
+        .then((res, err) => err ? console.log(err) : console.log('done'))   
+  
+        res.json(req.body.data)
+      })
+
     app.post('/api/current_user', (req, res) => { 
 
       const { about, city, country, interests, projects, image, skills } = req.body.data
-      User.findOneAndUpdate({ _id: req.user._id }, {interests: interests, activeProjects: projects, city: city, country: country, about: about, image: image, skills: skills }) 
+    
+      User.findOneAndUpdate(
+          { _id: req.user._id },
+           {interests: interests, 
+            activeProjects: projects, 
+            city: city, 
+            country: country, 
+            about: about, 
+            image: image, 
+            skills: skills, 
+        }) 
       .then((res, err) => err ? console.log(err) : console.log('done'))   
 
       res.json(req.body.data)

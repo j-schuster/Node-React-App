@@ -1,4 +1,4 @@
-import { GET_JOB_POST, GET_ALL_JOBS } from '../actions/types';
+import { GET_JOB_POST, GET_ALL_JOBS, CONTACT_USER } from '../actions/types';
 
 
 
@@ -14,6 +14,11 @@ export default function(state = {}, action) {
         	return {
         		jobs
         	}	
+         case CONTACT_USER :
+         const contacted = action.contactUser.data
+            return {
+                contacted
+            }   
         default:
             return state;
     } 

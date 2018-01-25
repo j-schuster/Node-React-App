@@ -17,7 +17,7 @@ module.exports = (app) => {
   })
     
    app.post('/api/jobs', (req, res) => {
-      const { title, description, skills, timeframe, createdBy, company, createdUserImage } = req.body.data;
+      const { title, description, skills, timeframe, createdBy, company, createdUserImage, createdUserEmail } = req.body.data;
 
       const job = new Job({
         title,
@@ -27,6 +27,7 @@ module.exports = (app) => {
         createdBy,
         company,
         createdUserImage,
+        createdUserEmail,
         timestamp: Date.now()
       })
 

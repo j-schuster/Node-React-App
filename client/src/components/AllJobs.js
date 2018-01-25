@@ -7,13 +7,37 @@ import { Link } from 'react-router-dom'
 
 class AllJobs extends React.Component {
 
+	state = {
+		jobs: '',
+	}
+
 	componentDidMount(){
 		this.props.getJobs()
 	}
 
+	componentWillReceiveProps(props){
+		setTimeout(function(){ this.setState({jobs: props.jobs.jobs.reverse()})}.bind(this), 500);
+	}
+
+	searchLatest = () => {
+		const jobs = this.state.jobs
+		const arrByTime = jobs.sort((a, b) => { 
+			return Date.parse(b.timestamp) - Date.parse(a.timestamp)
+		})
+		this.setState({ jobs: arrByTime })	
+	}
+
+	searchOldest = () => {
+		const jobs = this.state.jobs
+		const arrByTime = jobs.sort((a, b) => { 
+			return Date.parse(a.timestamp) - Date.parse(b.timestamp)
+		})
+		this.setState({ jobs: arrByTime })	
+	}
+
 	render(){
-		const jobs = this.props.jobs
-	
+		const jobs = this.state.jobs
+	  
 		return(
 			<div style={{ backgroundColor: '#F9FBFD', display: 'flex', felxDirection: 'column', justifyContent: 'center'}}>
 				
@@ -24,6 +48,8 @@ class AllJobs extends React.Component {
 								    <Segment.Group style={{marginTop: 15}}>
 									    <Segment><h3>Refine your search</h3></Segment>
 									    <Segment.Group>
+												 <Segment onClick={this.searchLatest}>Latest Jobs</Segment>
+												 <Segment onClick={this.searchOldest}>Oldest Jobs</Segment>
 									      <Segment>Design Jobs</Segment>
 									      <Segment>Front-end Jobs</Segment>
 									      <Segment>Backend Jobs</Segment>
@@ -32,7 +58,7 @@ class AllJobs extends React.Component {
 							    	 </Grid.Column>
 							         <Grid.Column width={12}>
 								    		 <ul style={{listStyle: 'none', width: '100%'}}>
-														{jobs.jobs ? jobs.jobs.map((job) => {
+														{jobs ? jobs.map((job) => {
 															return (
 																<li key={job._id}>
 																	<div style={{padding: 20, marginBottom: 20, backgroundColor: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', boxShadow: '9px 11px 8px -6px rgba(199,199,199,1)', fontWeight: 100, color: '#7c7c7c', borderRadius: 5}}>		

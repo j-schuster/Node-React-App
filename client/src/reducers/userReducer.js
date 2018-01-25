@@ -1,12 +1,18 @@
-import { FETCH_USER, UPDATE_USER } from '../actions/types';
+import { FETCH_USER, UPDATE_USER, SAVE_JOB } from '../actions/types';
 
-export default function(state = null, action) {
+export default function(state = {}, action) {
     switch(action.type){
         case FETCH_USER :
             return action.user.data || false;
         case UPDATE_USER :
-        const final = { ...state, ...action.updatedUser.data}
-        	return final   
+        const user = action.updatedUser.data
+            return user
+        case SAVE_JOB:
+        const job = action.savedJob.data
+            return {
+                ...state,
+                savedJobs: [...state.savedJobs, job]
+            }    
         default:
             return state;
     } 

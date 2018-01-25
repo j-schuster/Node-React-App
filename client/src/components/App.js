@@ -26,7 +26,7 @@ class App extends React.Component {
         
         return(
         
-         <div>
+       
             <BrowserRouter>
                 <div>
                     <Nav/>
@@ -43,7 +43,7 @@ class App extends React.Component {
                     <Footer/> 
                 </div>
             </BrowserRouter>
-            </div>
+          
         
         );
     };

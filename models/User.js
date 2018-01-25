@@ -12,6 +12,7 @@ const userSchema = new Schema({
     country: String,
     about: String,
     skills: String,
+    savedJobs: Array,
     timestamp: ''
 })
 

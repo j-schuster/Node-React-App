@@ -7,3 +7,5 @@ export const ADD_SERVICE = 'add_service';
 export const GET_ALL_SERVICES = 'get_all_services';
 export const GET_SERVICE = 'get_service';
 export const GET_USER_INFO = 'get_user_info';
+export const CONTACT_USER = 'contact_user';
+export const SAVE_JOB = 'save_job';

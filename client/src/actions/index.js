@@ -6,7 +6,9 @@ import { FETCH_USER,
 		 ADD_SERVICE,
 		 GET_ALL_SERVICES,
 		 GET_SERVICE,
-		 GET_USER_INFO } from './types';
+		 GET_USER_INFO,
+		 CONTACT_USER,
+		SAVE_JOB } from './types';
 
 export const fetchUser = () => async dispatch => {
     const user = await axios.get('/api/current_user');
@@ -88,6 +90,23 @@ export const getUserInfo = (id) => async dispatch => {
 	 })
 }
 
+export const contactUser = (data) => async dispatch => {
+	const contactUser = await axios.post(`/api/contact`, {data});
+
+	dispatch({
+		type: CONTACT_USER,
+		contactUser
+	})
+}
+
+export const saveJob = (data) => async dispatch => {
+	const savedJob = await axios.post('/api/savedJobs', {data})
+
+	dispatch({
+		type: SAVE_JOB,
+		savedJob
+	})
+}
 
 
 

@@ -10,7 +10,8 @@ const jobSchema = new Schema({
     createdBy: String,
     timestamp: Date,
     company: String,
-    createdUserImage: String
+    createdUserImage: String,
+    createdUserEmail: String
 })
 
 mongoose.model('jobs', jobSchema)

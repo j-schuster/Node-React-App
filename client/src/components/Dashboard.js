@@ -68,13 +68,14 @@ class Dashboard extends React.Component {
  
 
 	render(){
+		
 		if(this.props.user){
-			const { city, country, about, interests, projects, timestamp, image, skills } = this.props.user
+			const { city, country, about, interests, projects, timestamp, image, skills, savedJobs } = this.props.user
 			
 			return (	
 				<div style={styles.outerContainer}>
 					<Container style={styles.container}>
-						<Label pointing='below' size='massive' color='blue' style={styles.label}>Hey! I'm {this.props.user ? this.props.user.name : 'person'}</Label>
+						<Label pointing='below' size='massive' color='blue' style={styles.label}>Hey! {this.props.user ? this.props.user.name : 'person'}</Label>
 							{image ? <Image src={image} alt='' size='medium' style={styles.image} circular /> : <Image src='http://www.freeiconspng.com/uploads/profile-icon-9.png' alt='' style={styles.image} size='medium' circular />}
 			  				<h2 style={styles.location}><Icon name='globe'/>Location: {city ? city + ' ,' + country : 'planet earth, the universe'}</h2>	
 			 					 <h3 style={styles.member}><Icon name='user'/>Member since: {new Date(timestamp).toString().substr(0,16)} </h3>			    
@@ -114,6 +115,18 @@ class Dashboard extends React.Component {
 						   					</Card>
 			   					
 			   					<Button positive onClick={this.handleOpen} style={styles.contactBtn}>Edit Profile</Button>
+								
+								{savedJobs && savedJobs.length > 0 ? 
+								<div>
+									<h1>You have some saved jobs</h1>
+									{savedJobs.map(job => {
+									return (
+									<div>	
+										<h3>{job.title}</h3>
+									</div>	
+									)
+								})}
+								</div> : null}
 				        
 				        <Modal open={this.state.modalOpen}
 						           onClose={this.handleClose}

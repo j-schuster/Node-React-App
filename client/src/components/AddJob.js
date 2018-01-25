@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addJob } from '../actions/index';
 import { Button, Form, Container, Input, TextArea, Grid, Label, Icon } from 'semantic-ui-react';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+
 
 class AddJob extends React.Component {
 
@@ -30,8 +31,8 @@ class AddJob extends React.Component {
 			timeframe: this.state.timeframe,
 			createdBy: this.props.user.name,
 			createdUserImage: this.props.user.image,
-			company: this.state.company
-
+			company: this.state.company,
+			createdUserEmail: this.props.user.email
 		}
 
 		this.props.addNewJob(job);
@@ -40,7 +41,6 @@ class AddJob extends React.Component {
 	}  	
 
 	render(){
-		
 		const { redirect } = this.state
 
 		if (redirect) {
