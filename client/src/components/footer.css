@@ -2,3 +2,26 @@ a {
 	color: #7c7c7c;
 	font-size: 17px;
 }
+
+.footerInfo li {
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.footerInfo li:hover{
+	color: black;
+	cursor: pointer;
+}
+
+.social:hover {
+	animation: scaled 0.5s ease-in-out forwards;
+	cursor: pointer;
+}
+
+@keyframes scaled {
+	0% {
+    transform: scale(1.0)
+  }
+  100% {
+    transform: scale(1.5)
+  }
+}

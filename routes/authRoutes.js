@@ -38,19 +38,27 @@ module.exports = (app) => {
     app.post('/api/savedJobs', (req, res) => { 
         
         const job =  req.body.data 
-       console.log(job)
+       
         User.findOneAndUpdate({
              _id: req.user._id 
-            }, { $push: { savedJobs: job } }, { new: true }
+            }, { $addToSet: { savedJobs: job } }
         ) 
         .then((res, err) => err ? console.log(err) : console.log('done'))   
   
         res.json(req.body.data)
       })
 
+      app.put('/api/user/:id', (req, res) => {
+        User.findOneAndUpdate(
+         { _id: req.params.id }, 
+          { $pull: { savedJobs : { id: req.body.jobId } }
+         }
+        ).then(() => res.send(req.body.jobId))
+      })
+
     app.post('/api/current_user', (req, res) => { 
 
-      const { about, city, country, interests, projects, image, skills } = req.body.data
+      const { about, city, country, interests, projects, image, skills, tags, stack } = req.body.data
     
       User.findOneAndUpdate(
           { _id: req.user._id },
@@ -61,6 +69,8 @@ module.exports = (app) => {
             about: about, 
             image: image, 
             skills: skills, 
+            tags,
+            stack,
         }) 
       .then((res, err) => err ? console.log(err) : console.log('done'))   
 

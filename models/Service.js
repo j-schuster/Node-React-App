@@ -8,7 +8,8 @@ const serviceSchema = new Schema({
     skills: String,
     lookingFor: String,
     userId: String,
-    timestamp: Date
+    timestamp: Date,
+    tags: Array,
 })
 
 mongoose.model('services', serviceSchema)

@@ -11,16 +11,16 @@ module.exports = (app) => {
   app.post('/api/contact', (req, res) => {
     // email is from person responding
     const { email, experience, motivation, createdByEmail, createdByName, candidateName } = req.body.data;
-    console.log(candidateName)
+    console.log(candidateName, email)
     const output = `
     <div>
       <h4>Dear ${createdByName}</h4>
-        <p>You have received interested in a job from the Alt-Truist app!</p>
-        <p>Below is more information about the candidate, feel free to get in touch through the email provided. If you have any questions about moving forward, please contact us a jschuster.dev@gmail.com</p>
+        <p>You have received interested in a posting from the Alt-Truist app!</p>
+        <p>Below is more information about the connection, feel free to get in touch through the email provided. If you have any questions about moving forward, please contact us a jschuster.dev@gmail.com</p>
         <hr>
         <h4>Name:</h4> 
         <p>${candidateName}</p>
-        <h4>Motivation for applying:</h4>
+        <h4>Message:</h4>
         <p>${motivation}</p>
         <h4>Contact Info</h4>
         <p>${email}</p>

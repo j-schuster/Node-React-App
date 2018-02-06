@@ -8,7 +8,10 @@ import { FETCH_USER,
 		 GET_SERVICE,
 		 GET_USER_INFO,
 		 CONTACT_USER,
-		SAVE_JOB } from './types';
+		 SAVE_JOB,
+		 DELETE_USER_CREATED_JOB,
+		 DELETE_SAVED_JOB,
+		 DELETE_SERVICE } from './types';
 
 export const fetchUser = () => async dispatch => {
     const user = await axios.get('/api/current_user');
@@ -108,8 +111,33 @@ export const saveJob = (data) => async dispatch => {
 	})
 }
 
+export const deleteUserCreatedJob = (id) => async dispatch => {
+	const deletedUserCreatedJob = await axios.delete(`/api/jobs/${id}`)
 
+	dispatch({
+		type: DELETE_USER_CREATED_JOB,
+		deletedUserCreatedJob
+	})
+}	
 
+export const deleteSavedJob = (userId, jobId) => async dispatch => {
+	
+	const deletedSavedJob = await axios.put(`/api/user/${ userId}`, { jobId } )
+
+	dispatch({
+		type: DELETE_SAVED_JOB,
+		deletedSavedJob
+	})
+}
+
+export const deleteService = (id) => async dispatch => {
+	const deletedService = await axios.delete(`/api/services/${id}`)
+
+	dispatch({
+		type: DELETE_SERVICE,
+		deletedService
+	})
+}
 
 
 

@@ -1,0 +1,130 @@
+.slideLeft {
+  animation: slideLeft 0.5s ease-in backwards;
+}
+
+.slideRight {
+  animation: slideRight 0.5s ease-in forwards;
+}
+
+.slideUp {
+  animation: slideUp 0.8s linear forwards;
+}
+
+.verticalSlide {
+  animation: verticalSlide 0.5s linear forwards;
+}
+
+.slowSlide {
+  animation: MoveUpDown 2s linear infinite;
+}
+
+.fadeIn {
+  animation: fadeIn 1s;
+  opacity: 1;
+}
+
+.scaleUp {
+  animation: scaleUp 0.5s ease-in forwards;
+}
+
+.testCarousel {
+  animation: slideTest 0.5s ease-out forwards;
+}
+
+@keyframes slideTest {
+  0% {
+    transform: translateX(120%)
+  }
+  100% {
+    transform: translateX(0%)
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.5)
+  }
+  100% {
+    transform: scale(1.0)
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes MoveUpDown {
+  0% {
+    -webkit-transform: translateY(0)
+  }
+  50% {
+    -webkit-transform: translateY(20px)
+  }
+  100% {
+    -webkit-transform: translateY(0)
+  }
+}
+
+@keyframes verticalSlide {
+  0% {
+    -webkit-transform: translateY(160px);
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    -webkit-transform: translateY(80%);
+    opacity: 0;
+  }
+
+  50% {
+    -webkit-transform: translateY(-5%);
+  }
+
+  75% {
+    -webkit-transform: translateY(3%);
+  }
+
+  90% {
+    -webkit-transform: translateY(-3%);
+  }
+  
+  100% {
+    -webkit-transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideLeft {
+  0% {
+    -webkit-transform: translateX(100%)
+  }
+  
+  100% {
+    -webkit-transform: translateX(0%)
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    -webkit-transform: translateX(-70%)
+  }
+  
+  100% {
+    -webkit-transform: translateX(0%)
+  }
+}
+
+.testimonial:hover {
+  color: #fff;
+}

@@ -11,7 +11,8 @@ const jobSchema = new Schema({
     timestamp: Date,
     company: String,
     createdUserImage: String,
-    createdUserEmail: String
+    createdUserEmail: String,
+    tags: Array,
 })
 
 mongoose.model('jobs', jobSchema)

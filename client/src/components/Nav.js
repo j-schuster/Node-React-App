@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Menu, Icon, Dropdown, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import Truist from '../images/Truist.png'
+import atLogo from '../images/altruistLogo.png'
 
 import './nav.css'
 
@@ -16,10 +16,10 @@ class Nav extends React.Component {
     render() {   
 
     return (
-      <Menu stackable size='large' className='navbar' borderless={true} style={{margin: 0}}>
+      <Menu fixed='top' stackable size='small' className='navbar' borderless={true} style={{display: 'flex', flex: 1, alignItems: 'center'}}>
 
          
-         <Link to='/'><img alt='truist logo' src={Truist} width={200} height={63} style={{marginLeft: 50}}/></Link>
+         <Link to='/'><img alt='truist logo' src={atLogo} width={160} height={30} style={{marginLeft: 50}}/></Link>
        
 
          {this.props.user ? <Menu.Menu position='right'>
@@ -30,8 +30,6 @@ class Nav extends React.Component {
                                    <Dropdown.Item href="/services">Services</Dropdown.Item>
                                     </Dropdown.Menu>
                                    </Dropdown> 
-
-
 
                               <Dropdown item text='Create a Post'>
                                 <Dropdown.Menu>

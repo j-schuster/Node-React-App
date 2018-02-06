@@ -9,3 +9,6 @@ export const GET_SERVICE = 'get_service';
 export const GET_USER_INFO = 'get_user_info';
 export const CONTACT_USER = 'contact_user';
 export const SAVE_JOB = 'save_job';
+export const DELETE_USER_CREATED_JOB = 'delete_user_created_job';
+export const DELETE_SAVED_JOB = 'delete_saved_job';
+export const DELETE_SERVICE = 'delete_service';

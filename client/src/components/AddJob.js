@@ -14,7 +14,9 @@ class AddJob extends React.Component {
 		timeframe: '',
 		company: '',
 		createdUserImage: '',
-		redirect: false
+		redirect: false,
+		selected: false,
+		tags: [],
 	}
 
 	handleChange = (event) => {
@@ -32,7 +34,8 @@ class AddJob extends React.Component {
 			createdBy: this.props.user.name,
 			createdUserImage: this.props.user.image,
 			company: this.state.company,
-			createdUserEmail: this.props.user.email
+			createdUserEmail: this.props.user.email,
+			tags: this.state.tags,
 		}
 
 		this.props.addNewJob(job);
@@ -40,9 +43,17 @@ class AddJob extends React.Component {
 		
 	}  	
 
+	selectTag = (e) => {
+		e.preventDefault()
+	
+		this.setState({
+			tags: [...this.state.tags, e.target.innerHTML]
+		})
+	}
+
 	render(){
 		const { redirect } = this.state
-
+		
 		if (redirect) {
        		return <Redirect to={`/alljobs`}/>
      	}
@@ -61,7 +72,8 @@ class AddJob extends React.Component {
 								   				<p>List specific technologies so that the right skills can be easily matched.</p>
 								    		 <h4><Icon name='check circle outline'/>GIVE A TIMELINE ESTIMATE</h4>
 								   		 <p>It helps to know the duration, so that the developer can manage time spent coding for your business!</p>
-								     </Grid.Column>
+								     
+										 </Grid.Column>
 
 								    <Grid.Column width={11}>
 								     <Form onSubmit={this.handleSubmit}>
@@ -89,7 +101,16 @@ class AddJob extends React.Component {
 								    		  <label style={{fontSize: 17}}>Timeframe</label>
 								    		  <Input type='text' name='timeframe' placeholder='3 months' onChange={this.handleChange}/>
 								    	</Form.Field>
-							  		<Button positive>SUBMIT JOB!</Button>
+											<div style={{height: 50, width: 400 }}>
+											<Button.Group>
+												<Button onClick={this.selectTag}>Developer</Button>
+												<Button onClick={this.selectTag}>Design</Button>
+												<Button onClick={this.selectTag}>Frontend</Button>
+												<Button onClick={this.selectTag}>Backend</Button>
+												<Button onClick={this.selectTag}>Wordpress</Button>
+											</Button.Group>
+										</div>
+							  		<Button positive style={{margin: 10}}>SUBMIT JOB!</Button>
 								 </Form>
 					      </Grid.Column>
 				 		  </Grid>								
@@ -112,3 +133,8 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddJob);
 // timeframe format
+
+/* <span style={{ height: 24, backgroundColor: '#cecece', margin: 5, color: '#333', pading: 2, paddingRight: 2, paddingLeft: 2 }} onClick={this.selectTag}>Designer</span>
+<span style={{ height: 24, backgroundColor: '#cecece', margin: 5, color: '#333', pading: 2, paddingRight: 2, paddingLeft: 2 }} onClick={this.selectTag}>Developer</span>
+<span style={{ height: 24, backgroundColor: '#cecece', margin: 5, color: '#333', pading: 2, paddingRight: 2, paddingLeft: 2 }} onClick={this.selectTag}>Frontend</span>
+<span style={{ height: 24, backgroundColor: '#cecece', margin: 5, color: '#333', pading: 2, paddingRight: 2, paddingLeft: 2 }} onClick={this.selectTag}>Backend</span> */

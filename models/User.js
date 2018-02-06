@@ -13,6 +13,8 @@ const userSchema = new Schema({
     about: String,
     skills: String,
     savedJobs: Array,
+    tags: Array,
+    stack: String,
     timestamp: ''
 })
 

@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchJob } from '../actions/index'
-import { Button, Container, Grid, Image, Icon, Label, Modal, TextArea, Message } from 'semantic-ui-react';
+import { Button, Container, Grid, Image, Icon, Label, Modal, TextArea, Message, Dimmer, Loader } from 'semantic-ui-react';
 import { contactUser, saveJob } from '../actions/index';
 
 class JobView extends React.Component {
@@ -54,22 +54,26 @@ class JobView extends React.Component {
 				title: this.props.jobs.job.title,
 				id: this.props.jobs.job._id,
 		 }
-
+		
 		 this.props.saveJob(job)
 	 }
 
-	 showThanksMessage = () => {
-		 return (
-			 <div>
-				 <h1>THANKS FOR APPLYING!</h1>
-			</div>	 
-		 )
+	 recentJob = (tStamp) => {
+		 const date1 = Date.parse(tStamp)
+		 const hours = Math.abs(date1 - Date.now())
+		 const hour = (hours / (1000 * 60 * 60)).toFixed(1);
+
+		 if(hour < 24) { 
+			 return ( 	<Label as='a' color='orange' ribbon='right' size='large' style={{width: 80, marginLeft: 40}}>This is a brand new post!</Label> )
+			} else{ 
+				return null 
+			}
 	 }
 
 	render(){
-		//console.log(this.props.jobs.job)
+		
 		if(this.props.jobs.job){
-			const {title, description, skills, timeframe, createdBy, timestamp, createdUserImage, company } = this.props.jobs.job
+			const {title, description, skills, timeframe, createdBy, timestamp, createdUserImage, company, } = this.props.jobs.job
 			return(
 				  <div style={{height: '100vh', backgroundColor: '#F9FBFD', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
 				   <h1 style={{textAlign: 'center', color: '#7c7c7c', marginTop: 100, textTransform: 'uppercase'}}>Check out this opportunity at {company} ...</h1>
@@ -88,7 +92,7 @@ class JobView extends React.Component {
 							    	 	  	 </Grid.Column>
 
 							        		 <Grid.Column width={11} style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around', color: '#7c7c7c'}}>
-								    		  <Label as='a' color='orange' ribbon='right' size='large' style={{width: 80, marginLeft: 40}}>This is a brand new post!</Label>
+								    		  {this.recentJob(timestamp)}
 								    		  <h1 style={{margin: 5}}>{this.props.jobs.job ? title : null}</h1>
 								     	  <h2 style={{margin: 5}}><Icon name='at'/>{this.props.jobs.job ? company : null}</h2>						     	 
 											<h3 style={{margin: 5}}>{this.props.jobs.job ? description : null}</h3>
@@ -102,7 +106,7 @@ class JobView extends React.Component {
 					<Modal open={this.state.modalOpen}
 						           onClose={this.handleClose}
 						           >
-							    <Modal.Header>Your Profile</Modal.Header>
+							    <Modal.Header>This is a great opportunity!</Modal.Header>
 							    <Modal.Content>
 							    	 <form className="ui form" onSubmit={this.submitJob} style={styles.modal}>
 										    <div className="field">
@@ -146,7 +150,9 @@ class JobView extends React.Component {
 				)
 		}else {
 			return (
-				<h1>This will be a loader BTW</h1>
+			<Dimmer active inverted style={{ backgroundColor: 'transparent' }}>
+				<Loader size='big'>Loading</Loader>
+			</Dimmer>	
 			)
 		}
 	}

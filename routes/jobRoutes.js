@@ -8,7 +8,12 @@ module.exports = (app) => {
   app.get('/api/jobs', (req, res) => {
     Job.find()
     .then((jobs) => res.json(jobs))
-    
+  })
+
+  app.delete('/api/jobs/:id', (req, res) => {
+    Job.findByIdAndRemove({
+      _id: req.params.id
+    }).then((job) => res.send(job))
   })
 
   app.get('/api/jobs/:id', (req, res) => {
@@ -17,7 +22,7 @@ module.exports = (app) => {
   })
     
    app.post('/api/jobs', (req, res) => {
-      const { title, description, skills, timeframe, createdBy, company, createdUserImage, createdUserEmail } = req.body.data;
+      const { title, description, skills, timeframe, createdBy, company, createdUserImage, createdUserEmail, tags } = req.body.data;
 
       const job = new Job({
         title,
@@ -28,6 +33,7 @@ module.exports = (app) => {
         company,
         createdUserImage,
         createdUserEmail,
+        tags,
         timestamp: Date.now()
       })
 
@@ -35,6 +41,3 @@ module.exports = (app) => {
       res.json(job)
    });
 };
-
-// require login
-// refactor .then statements

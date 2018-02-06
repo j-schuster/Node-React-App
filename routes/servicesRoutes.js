@@ -15,9 +15,15 @@ module.exports = (app) => {
     .then((service) => res.json(service))
   })
 
+  app.delete('/api/services/:id', (req, res) => {
+    Service.findByIdAndRemove({
+      _id: req.params.id
+    }).then(() => res.send(req.params.id))
+  })
+
   app.post('/api/services', (req, res) => {
   	
-  	const { userName, about, image, skills, lookingFor, userId } = req.body.data;
+  	const { userName, about, image, skills, lookingFor, userId, tags } = req.body.data;
    
   	const service = new Service({
   		userName: userName,
@@ -25,6 +31,8 @@ module.exports = (app) => {
       image: image,
       skills: skills,
       userId: userId,
+      tags,
+      lookingFor,
   		timestamp: Date.now()
   	})
 
