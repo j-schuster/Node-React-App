@@ -19,9 +19,13 @@ class AllJobs extends React.Component {
 
 	componentWillReceiveProps(props){
 		setTimeout(function(){ this.setState({
-			jobs: props.jobs.jobs.reverse(),
-			filteredJobs: props.jobs.jobs.reverse()
+			jobs: props.jobs.jobs,
+			filteredJobs: props.jobs.jobs
 		})}.bind(this), 500);
+	}
+
+	componentWillUnmount(){
+		this.setState({ jobs: '', filteredJobs: '' })
 	}
 
 	searchLatest = () => {
@@ -70,7 +74,7 @@ class AllJobs extends React.Component {
 
 	render(){
 		const jobs = this.state.filteredJobs
-	  
+	  console.log(this.props.jobs)
 		return(
 			<div style={{ backgroundColor: '#F9FBFD', display: 'flex', felxDirection: 'column', justifyContent: 'center', minHeight: '100vh'}}>
 				
@@ -106,7 +110,7 @@ class AllJobs extends React.Component {
 															<h3 style={{margin: 8}}><Icon name='time'/>Created: {new Date(job.timestamp).toString().substr(0,16)}</h3>
 															<div style={{display: 'flex'}}>
 															<Link to={`/job/${job._id}`}><Button primary style={{width: 120}}>View More</Button></Link>
-															<Button secondary style={{width: 120}} onClick={() => this.saveJobUser(job.company, job.title, job._id)}>Save Job</Button>
+														{this.props.user ? 	<Button secondary style={{width: 120}} onClick={() => this.saveJobUser(job.company, job.title, job._id)}>Save Job</Button> : <Link to="/signup"><Button positive>Sign up to Apply!</Button></Link>}
 															</div>
 														</div>	
 													</li>
@@ -131,9 +135,10 @@ const mapDispatchToProps = dispatch => ({
 	saveJob: (job) => dispatch(saveJob(job))
 })
 
-const mapStateToProps = ({ jobs }) => {
+const mapStateToProps = ({ jobs, user }) => {
 	return {
-		jobs
+		jobs,
+		user
 	}
 }
 

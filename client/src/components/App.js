@@ -31,7 +31,7 @@ class App extends React.Component {
                 <div>
                     <Nav/>
                     <Route exact path="/" component={Home}/>
-                    <Route exact path="/user/signup" component={SignUp}/>
+                    <Route exact path="/signup" component={SignUp}/>
                     <Route exact path="/profile/:id" component={Dashboard}/>
                     <Route exact path="/job/:id" component={JobView}/>
                     <Route exact path="/alljobs" component={AllJobs}/>

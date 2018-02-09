@@ -42,12 +42,18 @@ class Nav extends React.Component {
                               </Menu.Item>
                               
                             </Menu.Menu> 
-                          :<Menu.Menu position='right'>  
+                          :<Menu.Menu position='right'>
+                              <Menu.Item>
+                               <Link to="alljobs"> Jobs</Link>
+                              </Menu.Item>
+                              <Menu.Item>
+                              <Link to="services">Developers</Link>
+                              </Menu.Item>
                               <Menu.Item>
                                 <Button basic color='blue' href='/auth/google'>Login</Button>
                                   </Menu.Item>
                                   <Menu.Item>
-                                 <Button primary href='/user/signup'>Sign Up For Free</Button>
+                                 <Button primary href='/signup'>Sign Up For Free</Button>
                               </Menu.Item>
                            </Menu.Menu>}
 

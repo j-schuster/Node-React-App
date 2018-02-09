@@ -160,7 +160,7 @@ class Dashboard extends React.Component {
 							<Grid.Column width={8} style={{ padding: 10 }}>
 
 									
-					<Table celled inverted selectable>
+					<Table celled color={'teal'} selectable>
 						<Table.Header>
 							<Table.Row>
 								<Table.HeaderCell>Saved Jobs</Table.HeaderCell>
@@ -184,7 +184,7 @@ class Dashboard extends React.Component {
 							</Grid.Column>
 							<Grid.Column width={8} style={{ padding: 10 }}>
 
-							<Table celled inverted selectable>
+							<Table celled color={'blue'} selectable>
 								<Table.Header>
 									<Table.Row>
 										<Table.HeaderCell>Created Jobs</Table.HeaderCell>
@@ -208,7 +208,7 @@ class Dashboard extends React.Component {
 						</Grid.Row>
 
 							<Grid.Column width={8} style={{ padding: 10 }}>
-							<Table celled inverted selectable color={'teal'}>
+							<Table celled color={'purple'} selectable color={'teal'}>
 								<Table.Header>
 									<Table.Row>
 										<Table.HeaderCell>Created Services</Table.HeaderCell>
@@ -417,7 +417,7 @@ const styles={
 				flex: 1,
 				width: '100%',
 				height: 250,
-				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.8)',
+				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.1)',
 				
 			},
 			largeCard2: {
@@ -425,25 +425,25 @@ const styles={
 				flex: 1,
 				width: '100%',
 				height: 250,
-				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.8)',
+				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.1)',
 			
 			},
 			infoCard1: {
 				height: 200,
 				width: '100%',
-				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.8)',
+				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.1)',
 			
 			},
 			infoCard2: {
 				height: 200,
 				width: '100%',
-				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.8)',
+				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.1)',
 				
 			},
 			infoCard3: {
 				height: 200,
 				width: '100%',
-				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.8)',
+				boxShadow: '9px 11px 8px -6px rgba(199,199,199,0.1)',
 				backgroundColor: '#80CBC4'
 			}
     }

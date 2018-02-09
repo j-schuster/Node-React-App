@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchJob } from '../actions/index'
 import { Button, Container, Grid, Image, Icon, Label, Modal, TextArea, Message, Dimmer, Loader } from 'semantic-ui-react';
 import { contactUser, saveJob } from '../actions/index';
+import { Link } from 'react-router-dom';
 
 class JobView extends React.Component {
 
@@ -87,8 +88,10 @@ class JobView extends React.Component {
 								  	  <h2 style={{margin: 5}}>{this.props.jobs.job ? createdBy : null}</h2>
 								  	  <p>On</p>
 								 		    <h3 style={{margin: 5}}>{this.props.jobs.job ? new Date(timestamp).toString().substr(0,16) : null}</h3>
-								 			   <Button style={{margin: 5, width: '100%'}} positive size='large' onClick={this.handleOpen}>Apply!</Button>
-								 			   <Button style={{margin: 5, width: '100%'}} primary size='large' onClick={this.saveJobUser}>Save for later</Button>	
+								 			  {this.props.user ? <div><Button style={{margin: 5, width: '100%'}} positive size='large' onClick={this.handleOpen}>Apply!</Button>
+																						 <Button style={{margin: 5, width: '100%'}} primary size='large' onClick={this.saveJobUser}>Save for later</Button> </div>
+																						 : 
+																						<Link to="/signup"><Button positive>Sign up to Apply!</Button></Link>}	
 							    	 	  	 </Grid.Column>
 
 							        		 <Grid.Column width={11} style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around', color: '#7c7c7c'}}>
